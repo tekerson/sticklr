@@ -21,8 +21,8 @@
     "eslint": "^1.7.3",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "less": "^2.5.3",
     "less-loader": "^2.2.1",
-    "sticklr": "file:lib/sticklr",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"

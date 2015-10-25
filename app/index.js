@@ -1,9 +1,10 @@
 import angular from "angular";
 
-import stickerBook from "sticklr/sticker-book";
-
 import "./components";
+import "./services/sticklr";
 
-angular.module("sticklr", ["sticklr-components"])
-  .factory("stickerBook", ["$q", stickerBook]);
+angular.module("sticklr", [
+    "sticklr-components",
+    "sticklr-lib",
+]);
 
