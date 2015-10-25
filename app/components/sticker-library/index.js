@@ -1,6 +1,8 @@
+import "./style.less";
 
 export default () => ({
   restrict: "E",
+  replace: true,
   scope: {
     stickers: "="
   },

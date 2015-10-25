@@ -1,6 +1,8 @@
+import "./style.less";
 
 export default (stickerBook) => ({
   restrict: "E",
+  replace: true,
   controllerAs: "vm",
 
   controller: () => {
@@ -17,9 +19,8 @@ export default (stickerBook) => ({
 
   template: `
     <div class="sticklr">
-      <h1>Sticklr</h1>
-      <stk-sticker-library stickers="vm.stickers()"></stk-sticker-library>
       <stk-photo-area photo="vm.photo()"></stk-photo-area>
+      <stk-sticker-library stickers="vm.stickers()"></stk-sticker-library>
     </div>
   `
 });

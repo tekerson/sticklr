@@ -1,12 +1,19 @@
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var lessLoaders = [
+  "css-loader",
+  "less-loader",
+];
+
 module.exports = {
   context: __dirname + "/app",
-  entry: {
-    javascript: "./index.js",
-    html: "./index.html"
-  },
+  entry: [
+    "./index.js",
+    "./index.html",
+  ],
 
   output: {
-    filename: "app.js",
+    filename: "[name].js",
     path: __dirname + "/dist",
   },
 
@@ -25,7 +32,15 @@ module.exports = {
         test: /\.html$/,
         loader: "file?name=[name].[ext]",
       },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("style-loader", lessLoaders.join("!")),
+      },
     ],
   },
+
+  plugins: [
+    new ExtractTextPlugin("[name].css"),
+  ],
 
 };
