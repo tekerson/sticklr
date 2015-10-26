@@ -3,14 +3,17 @@ import "./style.less";
 export default () => ({
   restrict: "E",
   replace: true,
+
   scope: {
-    photo: "="
+    photo: "=",
+    stuckers: "="
   },
+
   template: `
     <div class="photo-area">
       <h2>Photo Area</h2>
       <stk-photo-upload ng-if="!photo"></stk-photo-upload>
-      <stk-photo ng-if="photo" photo="photo"></stk-photo>
+      <stk-photo photo="photo" stuckers="stuckers"></stk-photo>
     </div>
   `
 });

@@ -7,19 +7,21 @@ export default (stickerBook) => ({
 
   controller: () => {
     let stickers = stickerBook.stickers;
+    let stuckers = stickerBook.stuckers;
     let photo = stickerBook.photo;
-
-    stickerBook.refresh();
 
     return {
       stickers,
+      stuckers,
       photo
     };
   },
 
   template: `
     <div class="sticklr">
-      <stk-photo-area photo="vm.photo()"></stk-photo-area>
+      <stk-photo-area photo="vm.photo()"
+                      stuckers="vm.stuckers()">
+      </stk-photo-area>
       <stk-sticker-library stickers="vm.stickers()"></stk-sticker-library>
     </div>
   `
