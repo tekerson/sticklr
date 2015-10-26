@@ -1,24 +1,34 @@
 import "./style.less";
 
-export default () => ({
+export default (stickerBook) => ({
   restrict: "E",
   replace: true,
+  controllerAs: "vm",
 
   scope: {
     stucker: "=",
   },
 
-  link: (scope, el) => {
-    el.css({
-      position: 'absolute',
-      left: scope.stucker.coords.x + "px",
-      top: scope.stucker.coords.y + "px"
-    });
+  controller: () => {
+    let style = (coords) => {
+      if (coords == null) {
+        return;
+      }
+      return {
+        left: coords.x + "px",
+        top: coords.y + "px",
+      };
+    };
+
+    return {
+      style
+    };
   },
 
   template: `
     <img class="stucker"
          ng-src="{{stucker.sticker.dataUri}}"
+         ng-style="vm.style(stucker.coords)"
          alt="{{stucker.sticker.name}}" />
   `
 });

@@ -7,17 +7,20 @@ export default (stickerBook) => ({
 
   scope: {
     photo: "=",
-    stuckers: "="
+    stuckers: "=",
+    picked: "="
   },
 
-  controller: () => {
+  controller: ($scope) => {
     let stick = (ev) => {
       let x = ev.clientX,
           y = ev.clientY;
 
       ev.preventDefault();
 
-      stickerBook.stick(mkCoords(x,y));
+      if (stickerBook.stick(mkCoords(x,y))) {
+        $scope.$emit("sticker.sticked");
+      }
     };
 
     return {
@@ -26,10 +29,11 @@ export default (stickerBook) => ({
   },
 
   template: `
-    <div class="photo", ng-click="vm.stick($event)">
+    <div class="photo", ng-mouseup="vm.stick($event)">
       <img ng-src="{{photo.dataUri}}" alt="Sticklr Photo" />
       <stk-stucker ng-repeat="stucker in stuckers track by $index"
                    stucker="stucker"></stk-stucker>
+      <stk-stucker ng-if="picked" stucker="picked"></stk-stucker>
     </div>
   `
 });

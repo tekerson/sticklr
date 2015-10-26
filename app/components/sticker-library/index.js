@@ -11,10 +11,12 @@ export default (stickerBook) => ({
     stickers: "=",
   },
 
-  controller: () => {
+  controller: ($scope) => {
     let pick = (ev, sticker) => {
       ev.preventDefault();
-      stickerBook.pick(sticker, mkCoords(ev.clientX, ev.clientY));
+      if (stickerBook.pick(sticker, mkCoords(ev.clientX, ev.clientY))) {
+        $scope.$emit("sticker.picked");
+      }
     };
     return {
       pick
@@ -27,7 +29,7 @@ export default (stickerBook) => ({
       <ol class="sticker-list">
         <stk-sticker ng-repeat="sticker in stickers track by $index"
                      sticker="sticker"
-                     ng-click="vm.pick($event, sticker)">
+                     ng-mousedown="vm.pick($event, sticker)">
         </stk-sticker>
       </ol>
       <stk-sticker-upload></stk-sticker-upload>

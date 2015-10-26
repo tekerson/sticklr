@@ -6,14 +6,15 @@ export default () => ({
 
   scope: {
     photo: "=",
-    stuckers: "="
+    stuckers: "=",
+    picked: "="
   },
 
   template: `
     <div class="photo-area">
       <h2>Photo Area</h2>
       <stk-photo-upload ng-if="!photo"></stk-photo-upload>
-      <stk-photo photo="photo" stuckers="stuckers"></stk-photo>
+      <stk-photo photo="photo" stuckers="stuckers" picked="picked"></stk-photo>
     </div>
   `
 });
