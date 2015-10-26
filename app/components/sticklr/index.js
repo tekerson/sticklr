@@ -16,7 +16,9 @@ export default (stickerBook) => ({
     let move = (ev) => {
       let x = ev.clientX,
           y = ev.clientY;
-      $scope.$apply(stickerBook.move(mkCoords(x, y)));
+      $scope.$apply(() => {
+        stickerBook.move(mkCoords(x, y))
+      });
     };
 
     $scope.$on("sticker.picked", () => {

@@ -10,6 +10,7 @@ import stickerUpload from "./sticker-upload";
 import photo from "./photo";
 import photoArea from "./photo-area";
 import photoUpload from "./photo-upload";
+import photoField from "./photo-field";
 
 export default ng.module("sticklr-components", [])
   .directive("sticklr", ["stickerBook", sticklr])
@@ -21,5 +22,5 @@ export default ng.module("sticklr-components", [])
 
   .directive("stkPhoto", photo)
   .directive("stkPhotoArea", photoArea)
-  .directive("stkPhotoUpload", photoUpload);
-
+  .directive("stkPhotoUpload", photoUpload)
+  .directive("stkPhotoField", photoField);
