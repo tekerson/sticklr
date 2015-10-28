@@ -25,7 +25,6 @@ export default (stickerBook) => ({
 
   template: `
     <div class="sticker-library">
-      <h2>Library</h2>
       <stk-sticker-upload></stk-sticker-upload>
       <ol class="sticker-list">
         <stk-sticker ng-repeat="sticker in stickers track by $index"

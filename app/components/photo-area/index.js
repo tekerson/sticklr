@@ -23,9 +23,12 @@ export default (stickerBook) => ({
 
   template: `
     <div class="photo-area">
-      <h2>Photo Area</h2>
       <stk-photo-upload ng-if="!photo"></stk-photo-upload>
-      <button ng-if="photo" ng-click="vm.reset()">Start Over</button>
+      <button class="reset-button"
+              ng-if="photo"
+              ng-click="vm.reset()">
+        Start Over
+      </button>
       <stk-photo ng-if="photo"
                  photo="photo"
                  stuckers="stuckers"

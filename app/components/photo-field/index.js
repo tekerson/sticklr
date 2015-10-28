@@ -1,6 +1,7 @@
 
 export default ($parse) => ({
   restrict: "E",
+  replace: true,
   controllerAs: "vm",
 
   scope: {
@@ -43,6 +44,6 @@ export default ($parse) => ({
   },
 
   template: `
-    <input type="file" />
+    <input type="file" class="photo-field" />
   `
 });

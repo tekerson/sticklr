@@ -1,8 +1,14 @@
+@import "~bootstrap/less/bootstrap";
+
 .sticklr {
-  height: 100%;
+  display: table;
   width: 100%;
 
-  margin: 0px;
-  padding: 0px;
+  .sticker-library, .photo-area {
+    display: table-cell;
+  }
 
+  .sticker-library {
+    width: 150px;
+  }
 }

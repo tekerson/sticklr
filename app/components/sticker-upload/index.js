@@ -1,3 +1,5 @@
+import "./style.less";
+
 import mkSticker from "sticklr/sticker";
 
 export default (stickerBook) => ({
@@ -12,7 +14,7 @@ export default (stickerBook) => ({
         return;
       }
       stickerBook.addSticker(mkSticker(sticker.name, sticker.dataUri));
-      hideUpload();
+      reset();
     };
 
     let showUpload = () => {
@@ -32,11 +34,15 @@ export default (stickerBook) => ({
       return true;
     };
 
-    $scope.showingUpload = false;
-    $scope.sticker = {
-      name: null,
-      dataUri: null
+    let reset = () => {
+      $scope.showingUpload = false;
+      $scope.sticker = {
+        name: null,
+        dataUri: null
+      };
     };
+
+    reset();
 
     return {
       upload,
@@ -48,13 +54,24 @@ export default (stickerBook) => ({
 
   template: `
     <div class="sticker-upload">
-      <button ng-click="vm.showUpload()" ng-if="!showingUpload">Upload Sticker</button>
-      <form ng-submit="vm.upload(sticker)" ng-if="showingUpload">
-        <input type="text" name="name" ng-model="sticker.name" />
-        <stk-photo-field on-upload="sticker.dataUri = dataUri"></stk-photo-field>
-        <button ng-disabled="!vm.isValid(sticker)">Submit</button>
-        <button ng-click="vm.hideUpload()">Cancel</button>
-      </form>
+      <button class="upload-button" ng-click="vm.showUpload()">Upload New Sticker</button>
+      <div class="upload-form-modal" ng-if="showingUpload">
+        <form class="upload-form" ng-submit="vm.upload(sticker)">
+          <div class="form-group">
+            <label for="sticker-upload-name">Name</label>
+            <input type="text" name="name" id="sticker-upload-name" class="form-control" ng-model="sticker.name" />
+          </div>
+
+          <div class="form-group">
+          <label class="sticker-upload-file-label" ng-class="{'uploaded': sticker.dataUri}"
+                 for="sticker-upload-file">Choose file&hellip;</label>
+            <stk-photo-field id="sticker-upload-file" on-upload="sticker.dataUri = dataUri"></stk-photo-field>
+          </div>
+
+          <button class="submit" ng-disabled="!vm.isValid(sticker)">Upload</button>
+          <button class="cancel" ng-click="vm.hideUpload()">Cancel</button>
+        </form>
+      </div>
     </div>
   `
 });

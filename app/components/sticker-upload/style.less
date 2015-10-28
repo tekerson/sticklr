@@ -1,0 +1,49 @@
+@import (reference) "~bootstrap/less/bootstrap";
+
+.sticker-upload {
+  .upload-button {
+    .btn;
+    .btn-primary;
+  }
+
+  .upload-form-modal {
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .upload-form {
+      .well;
+      display: block;
+      width: 500px;
+      margin: 100px auto;
+
+      .sticker-upload-file-label {
+        .btn;
+        .btn-default;
+        .btn-block;
+        &.uploaded {
+          .btn-success;
+        }
+      }
+
+      .photo-field {
+        display: none;
+      }
+
+      .submit {
+        .btn;
+        .btn-primary;
+      }
+      .cancel {
+        .btn;
+      }
+  }
+}

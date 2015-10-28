@@ -1,8 +1,10 @@
+import "./style.less";
 
 import mkPhoto from "sticklr/photo";
 
 export default (stickerBook) => ({
   restrict: "E",
+  replace: true,
   controllerAs: "vm",
 
   scope: {},
@@ -18,7 +20,8 @@ export default (stickerBook) => ({
 
   template: `
     <form class="photo-upload">
-      <stk-photo-field on-upload="vm.upload(dataUri)"></stk-photo-field>
+      <label for="photo-upload-field" class="photo-upload-label">Pick a photo</label>
+      <stk-photo-field id="photo-upload-field" on-upload="vm.upload(dataUri)"></stk-photo-field>
     </form>
   `
 });
