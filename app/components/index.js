@@ -13,8 +13,8 @@ import photoUpload from "./photo-upload";
 import photoField from "./photo-field";
 
 export default ng.module("sticklr-components", [])
-  .factory("stickerBook", ["stickerBookFactory", "$q", "state",
-                           (stickerBookFactory, Promise, state) => stickerBookFactory(Promise, state)])
+  .factory("stickerBook", ["stickerBookFactory", "state",
+                           (stickerBookFactory, state) => stickerBookFactory(state)])
 
   .directive("sticklr", ["stickerBook", sticklr])
 
