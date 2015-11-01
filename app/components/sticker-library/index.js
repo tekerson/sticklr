@@ -1,5 +1,6 @@
 import "./style.less";
 
+import mkStucker from "sticklr/stucker";
 import mkCoords from "sticklr/coords";
 
 export default (stickerBook) => ({
@@ -14,7 +15,7 @@ export default (stickerBook) => ({
   controller: ($scope) => {
     let pick = (ev, sticker) => {
       ev.preventDefault();
-      if (stickerBook.pick(sticker, mkCoords(ev.clientX, ev.clientY))) {
+      if (stickerBook.pick(mkStucker(sticker, mkCoords(ev.clientX, ev.clientY)))) {
         $scope.$emit("sticker.picked");
       }
     };
