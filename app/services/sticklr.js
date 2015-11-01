@@ -1,6 +1,6 @@
 import angular from "angular";
 
-import stickerBook from "sticklr/sticker-book";
+import mkStickerBook from "sticklr/sticker-book";
 
 angular.module("sticklr-lib", [])
-  .factory("stickerBook", ["$q", stickerBook]);
+  .value("stickerBookFactory", mkStickerBook);
