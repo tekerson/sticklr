@@ -2,16 +2,22 @@ import "./style.less";
 
 import mkCoords from "sticklr/coords";
 
-export default (stickerBook) => ({
+export default (stickerBook, stickerEvents) => ({
   restrict: "E",
   replace: true,
   controllerAs: "vm",
 
   controller: ($scope, $document) => {
-    let stickers = stickerBook.stickers;
-    let stuckers = stickerBook.stuckers;
-    let picked = stickerBook.picked;
-    let photo = stickerBook.photo;
+    let state = {};
+    let unsubscribe = stickerEvents.subscribe((newState) => {
+      state = newState;
+    });
+    $scope.$on("$destroy", unsubscribe);
+
+    let stickers = () => state.stickers;
+    let stuckers = () => state.stuckers;
+    let picked = () => state.picked;
+    let photo = () => state.photo;
 
     let move = (ev) => {
       let x = ev.clientX,
